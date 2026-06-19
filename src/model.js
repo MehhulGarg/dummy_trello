@@ -1,5 +1,13 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://mehulgargh:Emjee..1234@mycluster.m16mnl0.mongodb.net/trello-app-19june");
+const path = require("path");
+
+require("dotenv").config({
+  path: path.resolve(__dirname, "../.env"),
+});
+// const uri = process.env.MONGO_URI;
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    console.log("mongodb connected");
+}).catch(err => console.log("error",err));
 
 
 const userSchema = mongoose.Schema({
